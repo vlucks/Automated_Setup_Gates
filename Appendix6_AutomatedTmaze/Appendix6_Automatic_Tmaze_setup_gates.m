@@ -20,13 +20,24 @@ vid.DiskLogger = VideoWriter('AutoGate', 'Motion JPEG AVI')
 %vid.ROIPosition = [0 212 1138 333]; %enable to set video roi
 
 %% Define two regions of interests per gate - one for opening and one for closing of each gate
-
 roi_entrance_1 = [262 680 680 50];  % [x y w h]
+    roi1_x = roi_entrance_1(2):roi_entrance_1(2)+roi_entrance_1(4);
+    roi1_y = roi_entrance_1(1):roi_entrance_1(1)+roi_entrance_1(3);
 roi_entrance_2 = [262 580 680 50];
-roi_decision_1_2 = [250 150 100 100];
+    roi2_x = roi_entrance_2(2):roi_entrance_2(2)+roi_entrance_2(4);
+    roi2_y = roi_entrance_2(1):roi_entrance_2(1)+roi_entrance_2(3);
 roi_decision_1_1 = [400 150 100 100];
+    roid1_1x = roi_decision_1_1(2):roi_decision_1_1(2)+roi_decision_1_1(4);
+    roid1_1y = roi_decision_1_1(1):roi_decision_1_1(1)+roi_decision_1_1(3):
 roi_decision_2_1 = [650 150 100 100];
+    roid2_1x = roi_decision_2_1(2):(roi_decision_2_1(2)+roi_decision_2_1(4);
+    roid2_1y = roi_decision_2_1(1):(roi_decision_2_1(1)+roi_decision_2_1(3);
+roi_decision_1_2 = [250 150 100 100];
+    roid1_2x = roi_decision_1_2(2):(roi_decision_1_2(2)+roi_decision_1_2(4);
+    roid1_2y = roi_decision_1_2(1):(roi_decision_1_2(1)+roi_decision_1_2(3);
 roi_decision_2_2 = [800 150 100 100];
+    roid2_2x = roi_decision_2_2(2):(roi_decision_2_2(2)+roi_decision_2_2(4);
+    roid2_2y = roi_decision_2_2(1):(roi_decision_2_2(1)+roi_decision_2_2(3);
 
 % IM = getsnapshot(vid);   %enable to see location of rois (green: opening, red: closing) 
 % imshow(IM)
@@ -48,8 +59,6 @@ while state == 0;
     rectangle('Position', roi_entrance_1) %disable visualization to accelerate script
     
      % cut fetched frame to roi dimensions
-     roi1_x = roi_entrance_1(2):roi_entrance_1(2)+roi_entrance_1(4);
-     roi1_y = roi_entrance_1(1):roi_entrance_1(1)+roi_entrance_1(3);
      ROI_1 = IM(roi1_x, roi1_y);
 
       if min(ROI_1(:))<= 30==1; %detects fish by dark pixel
@@ -77,8 +86,6 @@ while state == 0;
     rectangle('Position', roi_entrance_2) %disable visualization to accelerate script
     
      % cut fetched frame to roi dimensions
-     roi2_x = roi_entrance_2(2):roi_entrance_2(2)+roi_entrance_2(4);
-     roi2_y = roi_entrance_2(1):roi_entrance_2(1)+roi_entrance_2(3);
      ROI_2 = IM(roi2_x, roi2_y);
      
       if min(ROI_2(:)) <= 30 ==1  %detects fish by dark pixel
@@ -106,7 +113,7 @@ while state == 0;
     rectangle('Position', roi_decision_2_1) %disable visualization to accelerate script
    
     %cut frame to both decision rois' dimensions 
-    roi_decision_1 = [IM(roi_decision_1_1(2):(roi_decision_1_1(2)+roi_decision_1_1(4)), roi_decision_1_1(1):(roi_decision_1_1(3)+roi_decision_1_1(1))), IM(roi_decision_2_1(2):(roi_decision_2_1(2)+roi_decision_2_1(4)), roi_decision_2_1(1):(roi_decision_2_1(3)+roi_decision_2_1(1)))];
+    roi_decision_1 = [IM(roid1_1x, roid1_1y), IM(roid2_1x, roid2_1y)];
  
     if min(roi_decision_1(:)) <= 30==1;  %detects fish by dark pixel       
             rectangle('Position', roi_decision_1_1 , 'EdgeColor', 'g') %disable visualization to accelerate script
@@ -132,7 +139,7 @@ while state == 0;
     rectangle('Position', roi_decision_2_2) %disable visualization to accelerate script
     
     %cut frame to both decision rois' dimensions 
-    roi_decision_2 = [IM(roi_decision_1_2(2):(roi_decision_1_2(2)+roi_decision_1_2(4)), roi_decision_1_2(1):(roi_decision_1_2(3)+roi_decision_1_2(1))), IM(roi_decision_2_2(2):(roi_decision_2_2(2)+roi_decision_2_2(4)), roi_decision_2_2(1):(roi_decision_2_2(3)+roi_decision_2_2(1)))];
+    roi_decision_2 = [IM(roid1_2x, roid1_2y), IM(roid2_2x, roid2_2y)];
 
     if min(roi_decision_2(:)) <= 30 ==1;  %detects fish by dark pixel
             rectangle('Position', roi_decision_1_2 , 'EdgeColor', 'g') %disable visualization to accelerate script
