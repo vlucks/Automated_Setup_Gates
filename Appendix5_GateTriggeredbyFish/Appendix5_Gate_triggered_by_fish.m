@@ -29,7 +29,12 @@ videodata=[];
 %% chosen waiting time, closes the gate and stops recording when fish is in ROI2
  
 roi_entrance_1 = [300 300 100 30]; %defines roi that triggers gate opening
+roi1_x = roi_entrance_1(2):roi_entrance_2(2)+roi_entrance_2(4);
+roi1_y = roi_entrance_1(1):roi_entrance_2(1)+roi_entrance_2(3);
 roi_entrance_2 = [500 300 100 30]; %defines roi that triggers gate closing
+roi2_x = roi_entrance_2(2):roi_entrance_2(2)+roi_entrance_2(4);
+roi2_y = roi_entrance_2(1):roi_entrance_2(1)+roi_entrance_2(3);
+
 pause_times    = [5, 8, 10, 12, 15]   %defines waiting times before gate opens - script picks random value later
  
 state = 0;
@@ -40,8 +45,6 @@ while state == 0;
     rectangle('Position', roi_entrance_1)
     
     %cut snapshot to ROI1
-    roi1_x = roi_entrance_1(2):roi_entrance_2(2)+roi_entrance_2(4);
-    roi1_y = roi_entrance_1(1):roi_entrance_2(1)+roi_entrance_2(3);
     ROI_1 = IM(roi1_x, roi1_y);
     
     
@@ -68,12 +71,10 @@ while state == 0;
     hold on 
     rectangle('Position', roi_entrance_2)
     
-    %cut snapshot to ROI1
-    roi2_x = roi_entrance_2(2):roi_entrance_2(2)+roi_entrance_2(4);
-    roi2_y = roi_entrance_2(1):roi_entrance_2(1)+roi_entrance_2(3);
+    %cut snapshot to ROI2
     ROI_2 = IM(roi2_x, roi2_y);
     
-      if min(ROI2) <= 30==1  %if fish(dark pixels)is detected in ROI2
+      if min(ROI_2) <= 30==1  %if fish(dark pixels)is detected in ROI2
             rectangle('Position', roi_entrance_2 , 'EdgeColor', 'ma') %visual trigger indication
             state = 1;
                 disp('Closing Gate')         
