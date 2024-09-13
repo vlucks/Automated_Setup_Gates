@@ -1,5 +1,5 @@
 # main.py Python3 script | Appendix 3: Motor control by push buttons
-# Approaches for automated setup gates in fish spatial behavioural experiments using the RaspberryPi
+# A framework for a low-cost system of automated gate control in assays of spatial cognition in fishes
 # 2024
 
 import RPi.GPIO as GPIO
