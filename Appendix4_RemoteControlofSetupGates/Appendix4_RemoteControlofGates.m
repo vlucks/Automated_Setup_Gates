@@ -1,5 +1,5 @@
 % Matlab script | Appendix 4: Remote motor control of setup gates
-% Approaches for automated setup gates in fish spatial behavioural experiments using the RaspberryPi
+% A framework for a low-cost system of automated gate control in assays of spatial cognition in fishes
 % 2024
 
 %%% Remember to sign in to the hotspot created by the pi 
