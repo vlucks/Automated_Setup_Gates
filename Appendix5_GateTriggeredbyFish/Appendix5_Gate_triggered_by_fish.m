@@ -1,5 +1,5 @@
 % Matlab script | Appendix 5: Gate triggered by presence of fish in roi via Matlab
-% Approaches for automated setup gates in fish spatial behavioural experiments using the RaspberryPi
+% A framework for a low-cost system of automated gate control in assays of spatial cognition in fishes
 % 2024
 
 %%% Remember to sign in to the local network created by the pi 
