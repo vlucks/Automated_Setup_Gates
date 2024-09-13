@@ -1,5 +1,5 @@
 % Matlab script | Appendix 6: Automated T-maze gates
-% Approaches for automated setup gates in fish spatial behavioural experiments using the RaspberryPi
+% A framework for a low-cost system of automated gate control in assays of spatial cognition in fishes
 % 2024
 clear all; close all
 imaqreset
