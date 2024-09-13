@@ -1,6 +1,6 @@
 # Python script | Appendix 6: Automated T-maze gates - motor3_close.py
 # modified after Joy-It_2017
-# Approaches for automated setup gates in fish spatial behavioural experiments using the RaspberryPi
+# A framework for a low-cost system of automated gate control in assays of spatial cognition in fishes
 # 2024
 
 from time import sleep
